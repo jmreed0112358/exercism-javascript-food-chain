@@ -226,8 +226,8 @@ describe('validateVerseRange()', function() {
     var i = 0,
       j = 0;
 
-    for (i = MAX ; i >= MIN ; i--) {
-      for (j = i; j >= MIN ; j--) {
+    for (i = MIN ; i <= MAX ; i++) {
+      for (j = i; j <= MAX ; j++) {
         expect(song.validateVerseRange(i, j)).toEqual(true);
       }
     }

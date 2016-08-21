@@ -25,7 +25,13 @@ FoodChain.prototype.validateVerseNum = function(verseNum) {
 };
 
 FoodChain.prototype.validateVerseRange = function(startVerse, endVerse) {
-  throw new NotImplementedException();
+  if (typeof startVerse !== 'number' || typeof endVerse !== 'number') {
+    throw new InvalidParameterException('validateVerseRange takes two numbers');
+  }
+
+  return (endVerse >= startVerse
+    && MIN <= startVerse && MAX >= startVerse
+    && MIN <= endVerse && MAX >= endVerse);
 };
 
 module.exports = FoodChain;

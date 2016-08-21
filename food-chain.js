@@ -26,12 +26,27 @@ FoodChain.prototype.verses = function(startVerse, endVerse) {
 };
 
 // Line generators.
+/*
+ * Verses 1-7: expected output.
+ * Verse 8: No output.
+ */
 FoodChain.prototype.genFirstLine = function(verseNum) {
   throw new NotImplementedException();
 };
 
+/*
+ * Verses 1, 2: No output.
+ * Verses 3-7: expected output.
+ * Verse 8: No output
+ */
 FoodChain.prototype.genSecondLine = function(verseNum) {
-  throw new NotImplementedException();
+  if (1 === verseNum || 2 === verseNum || 8 === verseNum) {
+    return '';
+  } else if ( 3 <= verseNum && 7 >= verseNum) {
+    return Constants.SECOND_LINES[verseNum - 3] + '\n';
+  } else {
+    throw new InvalidParameterException('verseNum was not in the correct range');
+  }
 };
 
 FoodChain.prototype.genStemLines = function(verseNum) {

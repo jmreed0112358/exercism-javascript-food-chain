@@ -159,7 +159,7 @@ xdescribe('verses()', function() {
   });
 });
 
-describe('genFirstLine()', function() {
+xdescribe('genFirstLine()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: 1', function() {
@@ -195,7 +195,7 @@ describe('genFirstLine()', function() {
   });
 });
 
-xdescribe('genSecondLine()', function() {
+describe('genSecondLine()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: 1', function() {
@@ -207,23 +207,23 @@ xdescribe('genSecondLine()', function() {
   });
 
   it('returns expected response for valid verse number: 3', function() {
-    expect(song.genSecondLine(3)).toEqual(Constants.SECOND_LINES[0] + '\n');
+    expect(song.genSecondLine(3)).toEqual('How absurd to swallow a bird!\n');
   });
 
   it('returns expected response for valid verse number: 4', function() {
-    expect(song.genSecondLine(4)).toEqual(Constants.SECOND_LINES[1] + '\n');
+    expect(song.genSecondLine(4)).toEqual('Imagine that, to swallow a cat!\n');
   });
 
   it('returns expected response for valid verse number: 5', function() {
-    expect(song.genSecondLine(5)).toEqual(Constants.SECOND_LINES[2] + '\n');
+    expect(song.genSecondLine(5)).toEqual('What a hog, to swallow a dog!\n');
   });
 
   it('returns expected response for valid verse number: 6', function() {
-    expect(song.genSecondLine(6)).toEqual(Constants.SECOND_LINES[3] + '\n');
+    expect(song.genSecondLine(6)).toEqual('Just opened her throat and swallowed a goat!\n');
   });
 
   it('returns expected response for valid verse number: 7', function() {
-    expect(song.genSecondLine(7)).toEqual(Constants.SECOND_LINES[4] + '\n');
+    expect(song.genSecondLine(7)).toEqual('I don\'t know how she swallowed a cow!\n');
   });
 
   it('returns expected response for valid verse number: 8', function() {

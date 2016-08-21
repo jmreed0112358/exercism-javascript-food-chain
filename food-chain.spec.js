@@ -159,7 +159,7 @@ xdescribe('verses', function() {
   });
 });
 
-describe('validateVerseNum()', function() {
+xdescribe('validateVerseNum()', function() {
   var song = new FoodChain();
 
   it('throws InvalidParameterException when given a non-number input', function () {
@@ -189,4 +189,51 @@ describe('validateVerseNum()', function() {
   });
 });
 
-xdescribe('validateVerseRange()');
+describe('validateVerseRange()', function() {
+  var song = new FoodChain();
+
+  it('throws InvalidParameterException when given non-number inputs: startVerse', function() {
+    expect(function() {
+      song.validateVerseRange({}, 5);
+    }).toThrow(
+      new InvalidParameterException('validateVerseRange takes two numbers'));
+  });
+
+  it('throws InvalidParameterException when given non-number inputs: endVerse', function() {
+    expect(function() {
+      song.validateVerseRange(1, {});
+    }).toThrow(
+      new InvalidParameterException('validateVerseRange takes two numbers'));
+  });
+
+  it('returns false for negative inputs: startVerse', function() {
+    expect(song.validateVerseRange(-1, 5)).toEqual(false);
+  });
+
+  it('returns false for inputs of zero: startVerse', function() {
+    expect(song.validateVerseRange(0, 3)).toEqual(false);
+  });
+
+  it('returns false for inputs out of range: startVerse', function() {
+    expect(song.validateVerseRange(1000, 2000)).toEqual(false);
+  });
+
+  it('returns false for inputs out of range: endVerse', function() {
+    expect(song.validateVerseRange(3, 1000)).toEqual(false);
+  });
+
+  it('returns true for valid ranges', function() {
+    var i = 0,
+      j = 0;
+
+    for (i = MAX ; i >= MIN ; i--) {
+      for (j = i; j >= MIN ; j--) {
+        expect(song.validateVerseRange(i, j)).toEqual(true);
+      }
+    }
+  });
+
+  it('returns false when startVerse > endVerse', function() {
+    expect(song.validateVerseRange(5, 2)).toEqual(false);
+  });
+});

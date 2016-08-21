@@ -159,11 +159,43 @@ xdescribe('verses()', function() {
   });
 });
 
-xdescribe('genFirstLine()', function() {
+describe('genFirstLine()', function() {
   var song = new FoodChain();
+
+  it('returns expected response for valid verse number: 1', function() {
+    expect(song.genFirstLine(1)).toEqual('I know an old lady who swallowed a fly.\n');
+  });
+
+  it('returns expected response for valid verse number: 2', function() {
+    expect(song.genFirstLine(2)).toEqual('I know an old lady who swallowed a spider.\nIt wriggled and jiggled and tickled inside her.\n');
+  });
+
+  it('returns expected response for valid verse number: 3', function() {
+    expect(song.genFirstLine(3)).toEqual('I know an old lady who swallowed a bird.\n');
+  });
+
+  it('returns expected response for valid verse number: 4', function() {
+    expect(song.genFirstLine(4)).toEqual('I know an old lady who swallowed a cat.\n');
+  });
+
+  it('returns expected response for valid verse number: 5', function() {
+    expect(song.genFirstLine(5)).toEqual('I know an old lady who swallowed a dog.\n');
+  });
+
+  it('returns expected response for valid verse number: 6', function() {
+    expect(song.genFirstLine(6)).toEqual('I know an old lady who swallowed a goat.\n');
+  });
+
+  it('returns expected response for valid verse number: 7', function() {
+    expect(song.genFirstLine(7)).toEqual('I know an old lady who swallowed a cow.\n');
+  });
+
+  it('returns expected response for valid verse number: 8', function() {
+    expect(song.genFirstLine(8)).toEqual('');
+  });
 });
 
-describe('genSecondLine()', function() {
+xdescribe('genSecondLine()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: 1', function() {

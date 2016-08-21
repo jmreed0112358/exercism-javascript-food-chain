@@ -27,11 +27,25 @@ FoodChain.prototype.verses = function(startVerse, endVerse) {
 
 // Line generators.
 /*
- * Verses 1-7: expected output.
+ * Verses 1, 3-7: expected output.
+ * Verse 2: expected output + special spider portion.
  * Verse 8: No output.
  */
 FoodChain.prototype.genFirstLine = function(verseNum) {
-  throw new NotImplementedException();
+  var output = '';
+
+  if (1 <= verseNum && 7 >= verseNum) {
+    output = Constants.FIRST_LINE + ' ' + Constants.ANIMALS[verseNum - 1] + '.\n';
+    if ( 2 === verseNum) {
+      output = output += 'It ' + Constants.SPIDER_EXTRA + '\n';
+    }
+  } else if (8 === verseNum) {
+    output = '';
+  } else {
+    throw new InvalidParameterException('versenum was not in the correct range');
+  }
+
+  return output;
 };
 
 /*

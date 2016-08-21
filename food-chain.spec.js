@@ -171,13 +171,13 @@ xdescribe('genStemLines()', function() {
   var song = new FoodChain();
 });
 
-xdescribe('genClosingLine()', function() {
+describe('genClosingLine()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: verses 1-7', function() {
     var i = 0;
 
-    for (i = 0 ; i <= 7 ; i++) {
+    for (i = Constants.MIN ; i <= 7 ; i++) {
       var actual = song.genClosingLine(i);
       expect(song.genClosingLine(i)).toEqual('I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n');
     }
@@ -188,7 +188,7 @@ xdescribe('genClosingLine()', function() {
   });
 });
 
-describe('validateVerseNum()', function() {
+xdescribe('validateVerseNum()', function() {
   var song = new FoodChain();
 
   it('throws InvalidParameterException when given a non-number input', function () {
@@ -218,7 +218,7 @@ describe('validateVerseNum()', function() {
   });
 });
 
-describe('validateVerseRange()', function() {
+xdescribe('validateVerseRange()', function() {
   var song = new FoodChain();
 
   it('throws InvalidParameterException when given non-number inputs: startVerse', function() {

@@ -39,7 +39,13 @@ FoodChain.prototype.genStemLines = function(verseNum) {
 };
 
 FoodChain.prototype.genClosingLine = function(verseNum) {
-  throw new NotImplementedException();
+  if (1 <= verseNum && 7 >= verseNum) {
+    return Constants.FINAL_LINES[0] + '\n';
+  } else if ( 8 === verseNum) {
+    return Constants.FINAL_LINES[1] + '\n';
+  } else {
+    throw new InvalidParameterException('verseNum was not in the correct range');
+  }
 };
 
 FoodChain.prototype.validateVerseNum = function(verseNum) {

@@ -1,4 +1,9 @@
-var FoodChain = require('./food-chain');
+'use strict'
+
+var FoodChain = require('./food-chain'),
+  NotImplementedException = require('./exceptions/NotImplementedException.js'),
+  InvalidParameterException = require('./exceptions/InvalidParameterException.js'),
+  InvalidStateException = require('./exceptions/InvalidStateException.js');
 
 const MIN = 1;
 const MAX = 8;

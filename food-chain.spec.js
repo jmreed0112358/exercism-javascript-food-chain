@@ -1,25 +1,25 @@
 'use strict'
 
 var FoodChain = require('./food-chain'),
+  Constants = require('./constants.js'),
   NotImplementedException = require('./exceptions/NotImplementedException.js'),
   InvalidParameterException = require('./exceptions/InvalidParameterException.js'),
   InvalidStateException = require('./exceptions/InvalidStateException.js');
-
-const MIN = 1;
-const MAX = 8;
 
 xdescribe('verse()', function () {
   var song = new FoodChain();
 
   xit('fly', function () {
-    var expected = 'I know an old lady who swallowed a fly.\nI don\'t know why she swallowed the fly. Perhaps she\'ll die.\n';
+    var expected = 'I know an old lady who swallowed a fly.\n' +
+    'I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n';
 
     expect(song.verse(1)).toEqual(expected);
   });
 
   xit('spider', function () {
     var expected = 'I know an old lady who swallowed a spider.\nIt wriggled and jiggled and tickled inside her.\n' +
-      'She swallowed the spider to catch the fly.\n' + 'I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n';
+      'She swallowed the spider to catch the fly.\n' +
+      'I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n';
 
     expect(song.verse(2)).toEqual(expected);
   });
@@ -95,7 +95,7 @@ xdescribe('verse()', function () {
   });
 });
 
-xdescribe('verses', function() {
+xdescribe('verses()', function() {
   xit('multiple verses', function () {
     var expected = '';
 
@@ -159,7 +159,36 @@ xdescribe('verses', function() {
   });
 });
 
-xdescribe('validateVerseNum()', function() {
+xdescribe('genFirstLine()', function() {
+  var song = new FoodChain();
+});
+
+xdescribe('genSecondLine()', function() {
+  var song = new FoodChain();
+});
+
+xdescribe('genStemLines()', function() {
+  var song = new FoodChain();
+});
+
+xdescribe('genClosingLine()', function() {
+  var song = new FoodChain();
+
+  it('returns expected response for valid verse number: verses 1-7', function() {
+    var i = 0;
+
+    for (i = 0 ; i <= 7 ; i++) {
+      var actual = song.genClosingLine(i);
+      expect(song.genClosingLine(i)).toEqual('I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n');
+    }
+  });
+
+  it('returns expected response for valid verse number: verse 8', function() {
+    expect(song.genClosingLine(8)).toEqual('I know an old lady who swallowed a horse.\nShe\'s dead, of course!\n');
+  });
+});
+
+describe('validateVerseNum()', function() {
   var song = new FoodChain();
 
   it('throws InvalidParameterException when given a non-number input', function () {
@@ -171,7 +200,7 @@ xdescribe('validateVerseNum()', function() {
 
   it('returns true for all valid verse numbers', function() {
     var i = 0;
-    for (i = MIN ; i <= MAX ; i++) {
+    for (i = Constants.MIN ; i <= Constants.MAX ; i++) {
       expect(song.validateVerseNum(i)).toEqual(true);
     }
   });
@@ -184,7 +213,7 @@ xdescribe('validateVerseNum()', function() {
     expect(song.validateVerseNum(-10)).toEqual(false);
   });
 
-  it('returns false with input > MAX', function() {
+  it('returns false with input > Constants.MAX', function() {
     expect(song.validateVerseNum(1000)).toEqual(false);
   });
 });
@@ -226,8 +255,8 @@ describe('validateVerseRange()', function() {
     var i = 0,
       j = 0;
 
-    for (i = MIN ; i <= MAX ; i++) {
-      for (j = i; j <= MAX ; j++) {
+    for (i = Constants.MIN ; i <= Constants.MAX ; i++) {
+      for (j = i; j <= Constants.MAX ; j++) {
         expect(song.validateVerseRange(i, j)).toEqual(true);
       }
     }

@@ -1,18 +1,44 @@
 'use strict'
 
 var FoodChain = function() {},
+  Constants = require('./constants.js'),
   NotImplementedException = require('./exceptions/NotImplementedException.js'),
   InvalidParameterException = require('./exceptions/InvalidParameterException.js'),
   InvalidStateException = require('./exceptions/InvalidStateException.js');
 
-const MIN = 1;
-const MAX = 8;
-
 FoodChain.prototype.verse = function(verseNum) {
-  throw new NotImplementedException();
+  // 1, 2, and 8 are special cases.  3-7 are 'normal'
+  if (1 === verseNum) {
+    // Special case. (fly)
+  } else if (2 === verseNum) {
+    // Special case. (spider)
+  } else if (3 <= verseNum && 7 >= verseNum) {
+    // Normal case (4-part song generation.)
+  } else if (8 === verseNum) {
+    // Special case. (horse)
+  } else {
+    // Garbage input..
+  }
 };
 
 FoodChain.prototype.verses = function(startVerse, endVerse) {
+  throw new NotImplementedException();
+};
+
+// Line generators.
+FoodChain.prototype.genFirstLine = function(verseNum) {
+  throw new NotImplementedException();
+};
+
+FoodChain.prototype.genSecondLine = function(verseNum) {
+  throw new NotImplementedException();
+};
+
+FoodChain.prototype.genStemLines = function(verseNum) {
+  throw new NotImplementedException();
+};
+
+FoodChain.prototype.genClosingLine = function(verseNum) {
   throw new NotImplementedException();
 };
 
@@ -21,7 +47,7 @@ FoodChain.prototype.validateVerseNum = function(verseNum) {
     throw new InvalidParameterException('validateVerseNum takes a number');
   }
 
-  return (MIN <= verseNum && MAX >= verseNum);
+  return (Constants.MIN <= verseNum && Constants.MAX >= verseNum);
 };
 
 FoodChain.prototype.validateVerseRange = function(startVerse, endVerse) {
@@ -30,8 +56,8 @@ FoodChain.prototype.validateVerseRange = function(startVerse, endVerse) {
   }
 
   return (endVerse >= startVerse
-    && MIN <= startVerse && MAX >= startVerse
-    && MIN <= endVerse && MAX >= endVerse);
+    && Constants.MIN <= startVerse && Constants.MAX >= startVerse
+    && Constants.MIN <= endVerse && Constants.MAX >= endVerse);
 };
 
 module.exports = FoodChain;

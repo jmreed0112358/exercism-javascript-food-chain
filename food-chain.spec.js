@@ -1,9 +1,12 @@
 var FoodChain = require('./food-chain');
 
-describe('Food Chain', function () {
+const MIN = 1;
+const MAX = 8;
+
+xdescribe('verse()', function () {
   var song = new FoodChain();
 
-  it('fly', function () {
+  xit('fly', function () {
     var expected = 'I know an old lady who swallowed a fly.\nI don\'t know why she swallowed the fly. Perhaps she\'ll die.\n';
 
     expect(song.verse(1)).toEqual(expected);
@@ -85,7 +88,9 @@ describe('Food Chain', function () {
 
     expect(song.verse(8)).toEqual(expected);
   });
+});
 
+xdescribe('verses', function() {
   xit('multiple verses', function () {
     var expected = '';
 
@@ -147,6 +152,36 @@ describe('Food Chain', function () {
 
     expect(song.verses(1, 8)).toEqual(expected);
   });
-
 });
 
+describe('validateVerseNum()', function() {
+  var song = new FoodChain();
+
+  it('throws InvalidParameterException when given a non-number input', function () {
+    expect(function() {
+      song.validateVerseNum({});
+    }).toThrow(
+      new InvalidParameterException('validateVerseNum takes a number'));
+  });
+
+  it('returns true for all valid verse numbers', function() {
+    var i = 0;
+    for (i = MIN ; i <= MAX ; i++) {
+      expect(song.validateVerseNum(i)).toEqual(true);
+    }
+  });
+
+  it('returns false with input of zero', function() {
+    expect(song.validateVerseNum(0)).toEqual(false);
+  });
+
+  it('returns false with negative input', function() {
+    expect(song.validateVerseNum(-10)).toEqual(false);
+  });
+
+  it('returns false with input > MAX', function() {
+    expect(song.validateVerseNum(1000)).toEqual(false);
+  });
+});
+
+xdescribe('validateVerseRange()');

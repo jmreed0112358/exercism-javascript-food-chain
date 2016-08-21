@@ -11,4 +11,12 @@ FoodChain.prototype.verses = function(startVerse, endVerse) {
   throw new NotImplementedException();
 };
 
+FoodChain.prototype.validateVerseNum = function(verseNum) {
+  throw new NotImplementedException();
+};
+
+FoodChain.prototype.validateVerseRange = function(startVerse, endVerse) {
+  throw new NotImplementedException();
+};
+
 module.exports = FoodChain;

@@ -159,7 +159,7 @@ xdescribe('verses()', function() {
   });
 });
 
-xdescribe('genFirstLine()', function() {
+describe('genFirstLine()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: 1', function() {
@@ -195,7 +195,7 @@ xdescribe('genFirstLine()', function() {
   });
 });
 
-describe('genSecondLine()', function() {
+xdescribe('genSecondLine()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: 1', function() {
@@ -231,8 +231,55 @@ describe('genSecondLine()', function() {
   });
 });
 
-xdescribe('genStemLines()', function() {
+describe('genStemLines()', function() {
   var song = new FoodChain();
+
+  it('returns expected response for valid verse number: 1', function() {
+    expect(song.genStemLines(1)).toEqual('');
+  });
+
+  it('returns expected response for valid verse number: 2', function() {
+    expect(song.genStemLines(2)).toEqual('She swallowed the spider to catch the fly.\n');
+  });
+
+  it('returns expected response for valid verse number: 3', function() {
+    expect(song.genStemLines(3)).toEqual('She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n' +
+      'She swallowed the spider to catch the fly.\n');
+  });
+
+  it('returns expected response for valid verse number: 4', function() {
+    expect(song.genStemLines(4)).toEqual('She swallowed the cat to catch the bird.\n' +
+      'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n' +
+      'She swallowed the spider to catch the fly.\n');
+  });
+
+  it('returns expected response for valid verse number: 5', function() {
+    expect(song.genStemLines(5)).toEqual('She swallowed the dog to catch the cat.\n' +
+      'She swallowed the cat to catch the bird.\n' +
+      'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n' +
+      'She swallowed the spider to catch the fly.\n');
+  });
+
+  it('returns expected response for valid verse number: 6', function() {
+    expect(song.genStemLines(6)).toEqual('She swallowed the goat to catch the dog.\n' +
+      'She swallowed the dog to catch the cat.\n' +
+      'She swallowed the cat to catch the bird.\n' +
+      'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n' +
+      'She swallowed the spider to catch the fly.\n');
+  });
+
+  it('returns expected response for valid verse number: 7', function() {
+    expect(song.genStemLines(7)).toEqual('She swallowed the cow to catch the goat.\n' +
+      'She swallowed the goat to catch the dog.\n' +
+      'She swallowed the dog to catch the cat.\n' +
+      'She swallowed the cat to catch the bird.\n' +
+      'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n' +
+      'She swallowed the spider to catch the fly.\n');
+  });
+
+  it('returns expected response for valid verse number: 8', function() {
+    expect(song.genStemLines(8)).toEqual('');
+  });
 });
 
 xdescribe('genClosingLine()', function() {

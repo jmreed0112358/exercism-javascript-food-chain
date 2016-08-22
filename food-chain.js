@@ -37,7 +37,7 @@ FoodChain.prototype.genFirstLine = function(verseNum) {
   if (1 <= verseNum && 7 >= verseNum) {
     output = Constants.FIRST_LINE + ' ' + Constants.ANIMALS[verseNum - 1] + '.\n';
     if ( 2 === verseNum) {
-      output = output += 'It ' + Constants.SPIDER_EXTRA + '\n';
+      output = output += 'It ' + Constants.SPIDER_EXTRA + '.\n';
     }
   } else if (8 === verseNum) {
     output = '';
@@ -63,8 +63,33 @@ FoodChain.prototype.genSecondLine = function(verseNum) {
   }
 };
 
+/*
+ * Verse 1, 8: No output.
+ * Verses 2-7: expected output.
+ */
 FoodChain.prototype.genStemLines = function(verseNum) {
-  throw new NotImplementedException();
+  var i = 0,
+    output = '';
+
+  if (2 <= verseNum && 7 >= verseNum) {
+    for (i = verseNum ; i > 1 ; i--) {
+      if (i === 3) {
+        output = output + Constants.STEM_ONE + Constants.ANIMALS[i-1] +
+          Constants.STEM_TWO + Constants.ANIMALS[i-2] +
+          ' that ' + Constants.SPIDER_EXTRA;
+      } else {
+        output = output + Constants.STEM_ONE + Constants.ANIMALS[i-1] +
+          Constants.STEM_TWO + Constants.ANIMALS[i-2];
+      }
+      output = output + '.\n';
+    }
+  } else if ( 1 === verseNum || 8 === verseNum) {
+    output = '';
+  } else {
+    throw new InvalidParameterException('verseNum was not in the correct range');
+  }
+
+  return output;
 };
 
 FoodChain.prototype.genClosingLine = function(verseNum) {

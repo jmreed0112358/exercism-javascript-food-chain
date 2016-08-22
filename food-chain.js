@@ -20,7 +20,18 @@ FoodChain.prototype.verse = function(verseNum) {
 };
 
 FoodChain.prototype.verses = function(startVerse, endVerse) {
-  throw new NotImplementedException();
+  var i = 0,
+    output = '';
+
+  if (this.validateVerseRange(startVerse, endVerse)) {
+    for (i = startVerse ; i <= endVerse ; i++) {
+      output = output + this.verse(i) + '\n';
+    }
+
+    return output;
+  } else {
+    throw new InvalidParameterException('Invalid range');
+  }
 };
 
 // Line generators.

@@ -6,7 +6,7 @@ var FoodChain = require('./food-chain'),
   InvalidParameterException = require('./exceptions/InvalidParameterException.js'),
   InvalidStateException = require('./exceptions/InvalidStateException.js');
 
-describe('verse()', function () {
+xdescribe('verse()', function () {
   var song = new FoodChain();
 
   it('fly', function () {
@@ -95,8 +95,10 @@ describe('verse()', function () {
   });
 });
 
-xdescribe('verses()', function() {
-  xit('multiple verses', function () {
+describe('verses()', function() {
+  var song = new FoodChain();
+
+  it('multiple verses', function () {
     var expected = '';
 
     expected += 'I know an old lady who swallowed a fly.\nI don\'t know why she swallowed the fly. Perhaps she\'ll die.\n\n';
@@ -107,7 +109,7 @@ xdescribe('verses()', function() {
     expect(song.verses(1, 2)).toEqual(expected);
   });
 
-  xit('the whole song', function () {
+  it('the whole song', function () {
     var expected = '';
 
     expected += 'I know an old lady who swallowed a fly.\nI don\'t know why she swallowed the fly. Perhaps she\'ll die.\n\n';
@@ -231,7 +233,7 @@ xdescribe('genSecondLine()', function() {
   });
 });
 
-describe('genStemLines()', function() {
+xdescribe('genStemLines()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: 1', function() {

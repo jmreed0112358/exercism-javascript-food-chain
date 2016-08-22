@@ -6,17 +6,17 @@ var FoodChain = require('./food-chain'),
   InvalidParameterException = require('./exceptions/InvalidParameterException.js'),
   InvalidStateException = require('./exceptions/InvalidStateException.js');
 
-xdescribe('verse()', function () {
+describe('verse()', function () {
   var song = new FoodChain();
 
-  xit('fly', function () {
+  it('fly', function () {
     var expected = 'I know an old lady who swallowed a fly.\n' +
     'I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n';
 
     expect(song.verse(1)).toEqual(expected);
   });
 
-  xit('spider', function () {
+  it('spider', function () {
     var expected = 'I know an old lady who swallowed a spider.\nIt wriggled and jiggled and tickled inside her.\n' +
       'She swallowed the spider to catch the fly.\n' +
       'I don\'t know why she swallowed the fly. Perhaps she\'ll die.\n';
@@ -24,7 +24,7 @@ xdescribe('verse()', function () {
     expect(song.verse(2)).toEqual(expected);
   });
 
-  xit('bird', function () {
+  it('bird', function () {
     var expected = 'I know an old lady who swallowed a bird.\n' +
       'How absurd to swallow a bird!\n' +
       'She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n' +
@@ -34,7 +34,7 @@ xdescribe('verse()', function () {
     expect(song.verse(3)).toEqual(expected);
   });
 
-  xit('cat', function () {
+  it('cat', function () {
     var expected = 'I know an old lady who swallowed a cat.\n' +
       'Imagine that, to swallow a cat!\n' +
       'She swallowed the cat to catch the bird.\n' +
@@ -46,7 +46,7 @@ xdescribe('verse()', function () {
     expect(song.verse(4)).toEqual(expected);
   });
 
-  xit('dog', function () {
+  it('dog', function () {
     var expected = 'I know an old lady who swallowed a dog.\n' +
       'What a hog, to swallow a dog!\n' +
       'She swallowed the dog to catch the cat.\n' +
@@ -59,7 +59,7 @@ xdescribe('verse()', function () {
     expect(song.verse(5)).toEqual(expected);
   });
 
-  xit('goat', function () {
+  it('goat', function () {
     var expected = 'I know an old lady who swallowed a goat.\n' +
       'Just opened her throat and swallowed a goat!\n' +
       'She swallowed the goat to catch the dog.\n' +
@@ -73,7 +73,7 @@ xdescribe('verse()', function () {
     expect(song.verse(6)).toEqual(expected);
   });
 
-  xit('cow', function () {
+  it('cow', function () {
     var expected = 'I know an old lady who swallowed a cow.\n' +
       'I don\'t know how she swallowed a cow!\n' +
       'She swallowed the cow to catch the goat.\n' +
@@ -159,7 +159,7 @@ xdescribe('verses()', function() {
   });
 });
 
-describe('genFirstLine()', function() {
+xdescribe('genFirstLine()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: 1', function() {

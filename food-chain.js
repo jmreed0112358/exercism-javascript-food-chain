@@ -7,18 +7,16 @@ var FoodChain = function() {},
   InvalidStateException = require('./exceptions/InvalidStateException.js');
 
 FoodChain.prototype.verse = function(verseNum) {
-  // 1, 2, and 8 are special cases.  3-7 are 'normal'
-  if (1 === verseNum) {
-    // Special case. (fly)
-  } else if (2 === verseNum) {
-    // Special case. (spider)
-  } else if (3 <= verseNum && 7 >= verseNum) {
-    // Normal case (4-part song generation.)
-  } else if (8 === verseNum) {
-    // Special case. (horse)
+  var output = '';
+
+  if (1 <= verseNum && 8 >= verseNum) {
+    output = this.genFirstLine(verseNum) + this.genSecondLine(verseNum) +
+      this.genStemLines(verseNum) + this.genClosingLine(verseNum);
   } else {
-    // Garbage input..
+    throw new InvalidParameterException('verseNum was not in the correct range');
   }
+
+  return output;
 };
 
 FoodChain.prototype.verses = function(startVerse, endVerse) {

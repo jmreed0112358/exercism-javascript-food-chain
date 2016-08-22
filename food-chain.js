@@ -9,7 +9,7 @@ var FoodChain = function() {},
 FoodChain.prototype.verse = function(verseNum) {
   var output = '';
 
-  if (1 <= verseNum && 8 >= verseNum) {
+  if(this.validateVerseNum(verseNum)) {
     output = this.genFirstLine(verseNum) + this.genSecondLine(verseNum) +
       this.genStemLines(verseNum) + this.genClosingLine(verseNum);
   } else {

@@ -6,7 +6,7 @@ var FoodChain = require('./food-chain'),
   InvalidParameterException = require('./exceptions/InvalidParameterException.js'),
   InvalidStateException = require('./exceptions/InvalidStateException.js');
 
-xdescribe('verse()', function () {
+describe('verse()', function () {
   var song = new FoodChain();
 
   it('fly', function () {
@@ -161,7 +161,7 @@ describe('verses()', function() {
   });
 });
 
-xdescribe('genFirstLine()', function() {
+describe('genFirstLine()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: 1', function() {
@@ -197,7 +197,7 @@ xdescribe('genFirstLine()', function() {
   });
 });
 
-xdescribe('genSecondLine()', function() {
+describe('genSecondLine()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: 1', function() {
@@ -233,7 +233,7 @@ xdescribe('genSecondLine()', function() {
   });
 });
 
-xdescribe('genStemLines()', function() {
+describe('genStemLines()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: 1', function() {
@@ -284,7 +284,7 @@ xdescribe('genStemLines()', function() {
   });
 });
 
-xdescribe('genClosingLine()', function() {
+describe('genClosingLine()', function() {
   var song = new FoodChain();
 
   it('returns expected response for valid verse number: verses 1-7', function() {
@@ -301,7 +301,7 @@ xdescribe('genClosingLine()', function() {
   });
 });
 
-xdescribe('validateVerseNum()', function() {
+describe('validateVerseNum()', function() {
   var song = new FoodChain();
 
   it('throws InvalidParameterException when given a non-number input', function () {
@@ -331,7 +331,7 @@ xdescribe('validateVerseNum()', function() {
   });
 });
 
-xdescribe('validateVerseRange()', function() {
+describe('validateVerseRange()', function() {
   var song = new FoodChain();
 
   it('throws InvalidParameterException when given non-number inputs: startVerse', function() {
